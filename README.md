@@ -1,5 +1,5 @@
 # Mobile Contacts with Pagination
-Cross-platform plugin for Cordova / PhoneGap to list all the contacts with pagination.
+Cross-platform plugin for Cordova / PhoneGap to list all the contacts with pagination. 
 
 ```
 cordova plugin add https://github.com/perumalraja/cordova-plugin-contacts-optimized.git
