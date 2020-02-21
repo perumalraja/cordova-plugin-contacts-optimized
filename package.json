@@ -1,0 +1,32 @@
+{
+  "name": "cordova-plugin-contacts-optimized",
+  "version": "0.0.12",
+  "description": "Cordova Plugin to List Contacts Phone Numbers with Pagination",
+  "cordova": {
+    "id": "cordova-plugin-contacts-optimized",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perumalraja/cordova-plugin-contacts-optimized.git"
+  },
+  "keywords": [
+    "cordova",
+    "contacts",
+    "list",
+    "phone",
+    "numbers",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Mycura Team",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/perumalraja/cordova-plugin-contacts-optimized/issues"
+  },
+  "homepage": "https://github.com/perumalraja/cordova-plugin-contacts-optimized#readme"
+}
