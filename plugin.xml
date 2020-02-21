@@ -9,7 +9,7 @@
     <description>Cordova Plugin to List Contacts Phone Numbers with Pagination</description>
     <license>Apache 2.0</license>
     <keywords>cordova,contacts,list,phone,numbers</keywords>
-    <issue>https://github.com/dbaq/cordova-plugin-contacts-optimized/issues</issue>
+    <issue>https://github.com/sysramgit/cordova-plugin-contacts-optimized/issues</issue>
 
     <js-module src="www/contactsPhoneNumbers.js" name="contactsPhoneNumbers">
         <clobbers target="navigator.contactsPhoneNumbers" />
@@ -19,7 +19,7 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="ContactsPhoneNumbers">
-                <param name="android-package" value="com.dbaq.cordova.contactsPhoneNumbers.ContactsManager"/>
+                <param name="android-package" value="com.sysramgit.cordova.contactsPhoneNumbers.ContactsManager"/>
             </feature>
         </config-file>
 
@@ -27,7 +27,7 @@
             <uses-permission android:name="android.permission.READ_CONTACTS" />
         </config-file>
 
-        <source-file src="src/android/ContactsManager.java" target-dir="src/com/dbaq/cordova/contactsPhoneNumbers" />
+        <source-file src="src/android/ContactsManager.java" target-dir="src/com/sysramgit/cordova/contactsPhoneNumbers" />
     </platform>
 
     <!-- ios -->
