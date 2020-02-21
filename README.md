@@ -2,8 +2,6 @@
 Cross-platform plugin for Cordova / PhoneGap to list all the contacts with pagination.
 
 ```
-or use this repository (unstable)
-```
 cordova plugin add https://github.com/perumalraja/cordova-plugin-contacts-optimized.git
 ```
 
