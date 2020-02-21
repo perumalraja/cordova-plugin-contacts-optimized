@@ -122,7 +122,7 @@ The Android code is heavily inspired from the official plugin with some tweaks t
 
 The MIT License
 
-Copyright (c) 2013 Didier Baquier
+Copyright (c) 2020 SysRam BigData PVT LTD.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
