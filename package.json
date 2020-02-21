@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/perumalraja/cordova-plugin-contacts-optimized.git"
+    "url": "git+https://github.com/sysramgit/cordova-plugin-contacts-optimized.git"
   },
   "keywords": [
     "cordova",
@@ -26,7 +26,7 @@
   "author": "Mycura Team",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/perumalraja/cordova-plugin-contacts-optimized/issues"
+    "url": "https://github.com/sysramgit/cordova-plugin-contacts-optimized/issues"
   },
-  "homepage": "https://github.com/perumalraja/cordova-plugin-contacts-optimized#readme"
+  "homepage": "https://github.com/sysramgit/cordova-plugin-contacts-optimized#readme"
 }
