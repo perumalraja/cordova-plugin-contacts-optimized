@@ -78,7 +78,7 @@ public class ContactsManager extends CordovaPlugin {
         });
     }
 
-    private JSONArray list() {
+    private JSONArray list(int pagenumber,int rowperpage) {
         JSONArray contacts = new JSONArray();
         ContentResolver cr = this.cordova.getActivity().getContentResolver();
         String[] projection = new String[] {
@@ -101,7 +101,7 @@ public class ContactsManager extends CordovaPlugin {
                 null,
                 ContactsContract.Data.CONTACT_ID + " ASC");
 
-        contacts = populateContactArray(cursor);
+        contacts = populateContactArray(cursor,pagenumber,rowperpage);
         return contacts;
     }
 
@@ -112,7 +112,7 @@ public class ContactsManager extends CordovaPlugin {
      * @param c            the cursor
      * @return             a JSONArray of contacts
      */
-    private JSONArray populateContactArray(Cursor c) {
+    private JSONArray populateContactArray(Cursor c,int pagenumber,int rowperpage) {
 
         JSONArray contacts = new JSONArray();
 
@@ -125,10 +125,31 @@ public class ContactsManager extends CordovaPlugin {
         JSONArray phones = new JSONArray();
 
         try {
+
             if (c.getCount() > 0) {
+
+                int seeker = ((pagenumber*rowperpage)-pagenumber)+1;
+                Log.e(LOG_TAG, "seeker:" + String(seeker), null);
+                if(seeker>1)
+                {
+                    int cseek=0;
+                    while (cseek<seeker) {    
+                        try
+                        {
+                            Log.e(LOG_TAG, "current seeker:" + String(cseek), null);
+                            c.moveToNext();
+                        }
+                        catch(Exception ee){
+                            Log.e(LOG_TAG, ee.getMessage(), e);
+                        }
+                        cseek++;
+                    }
+                }
+
                 while (c.moveToNext()) {
                     contactId = c.getString(c.getColumnIndex(ContactsContract.Data.CONTACT_ID));
 
+                    Log.e(LOG_TAG, "current seeker:" + String(cseek), null);
                     if (c.getPosition() == 0) // If we are in the first row set the oldContactId
                         oldContactId = contactId;
 
