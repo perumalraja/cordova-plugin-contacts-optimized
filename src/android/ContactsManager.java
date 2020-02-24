@@ -120,15 +120,16 @@ public class ContactsManager extends CordovaPlugin {
         int pagenumber=1;
         int rowperpage=20;
 
-        System.out.println(this.executeArgs.toString());
-
         try {
-            pagenumber = this.executeArgs.getJSONObject(0).getInt("pagenumber");
-            rowperpage = this.executeArgs.getJSONObject(0).getInt("rowperpage");
+            pagenumber = this.executeArgs.getInt(0);
+            rowperpage = this.executeArgs.getInt(1);
         }
         catch (Exception ee){
             System.out.println(ee.getMessage());
         }
+
+        System.out.println("Pagenumber:" + pagenumber);
+        System.out.println("Rowperpage:" + rowperpage);
 
         JSONArray contacts = new JSONArray();
 
@@ -142,12 +143,14 @@ public class ContactsManager extends CordovaPlugin {
 
         try {
 
+            System.out.println("Contact Count:" + c.getCount());
+
             if (c.getCount() > 0) {
 
                 int seeker = ((pagenumber*rowperpage)-pagenumber)+1;
                 int endseeker = (pagenumber*rowperpage);
                 Log.e(LOG_TAG, "seeker:" + String.valueOf(seeker), null);
-                int cseek=0;
+                int cseek=1;
                 if(seeker>1)
                 {
                     while (cseek<seeker) {    
