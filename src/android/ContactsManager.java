@@ -156,7 +156,7 @@ public class ContactsManager extends CordovaPlugin {
                             c.moveToNext();
                         }
                         catch(Exception ee){
-                            Log.e(LOG_TAG, ee.getMessage(), e);
+                            Log.e(LOG_TAG, ee.getMessage(), ee);
                         }
                         cseek++;
                     }
