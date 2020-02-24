@@ -145,14 +145,14 @@ public class ContactsManager extends CordovaPlugin {
 
                 int seeker = ((pagenumber*rowperpage)-pagenumber)+1;
                 int endseeker = (pagenumber*rowperpage);
-                Log.e(LOG_TAG, "seeker:" + String(seeker), null);
+                Log.e(LOG_TAG, "seeker:" + String.valueOf(seeker), null);
                 int cseek=0;
                 if(seeker>1)
                 {
                     while (cseek<seeker) {    
                         try
                         {
-                            Log.e(LOG_TAG, "current seeker:" + String(cseek), null);
+                            Log.e(LOG_TAG, "current seeker:" + String.valueOf(cseek), null);
                             c.moveToNext();
                         }
                         catch(Exception ee){
@@ -165,7 +165,7 @@ public class ContactsManager extends CordovaPlugin {
                 while (c.moveToNext()) {
                     contactId = c.getString(c.getColumnIndex(ContactsContract.Data.CONTACT_ID));
 
-                    Log.e(LOG_TAG, "current seeker:" + String(cseek), null);
+                    Log.e(LOG_TAG, "current seeker:" + String.valueOf(cseek), null);
                     if (c.getPosition() == 0) // If we are in the first row set the oldContactId
                         oldContactId = contactId;
 
