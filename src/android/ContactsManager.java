@@ -81,18 +81,6 @@ public class ContactsManager extends CordovaPlugin {
 
     private JSONArray list() {
 
-        int pagenumber=1;
-        int rowperpage=20;
-        
-        System.out.println(this.executeArgs.toString());
-
-        try {
-            pagenumber = this.executeArgs.getJSONObject(0).getInt("pagenumber");
-            rowperpage = this.executeArgs.getJSONObject(0).getInt("rowperpage");
-        }
-        catch (Exception ee){
-            System.out.println(ee.getMessage());
-        }
 
         JSONArray contacts = new JSONArray();
         ContentResolver cr = this.cordova.getActivity().getContentResolver();
@@ -116,7 +104,7 @@ public class ContactsManager extends CordovaPlugin {
                 null,
                 ContactsContract.Data.CONTACT_ID + " ASC");
 
-        contacts = populateContactArray(cursor,pagenumber,rowperpage);
+        contacts = populateContactArray(cursor);
         return contacts;
     }
 
@@ -127,7 +115,20 @@ public class ContactsManager extends CordovaPlugin {
      * @param c            the cursor
      * @return             a JSONArray of contacts
      */
-    private JSONArray populateContactArray(Cursor c,int pagenumber,int rowperpage) {
+    private JSONArray populateContactArray(Cursor c) {
+
+        int pagenumber=1;
+        int rowperpage=20;
+
+        System.out.println(this.executeArgs.toString());
+
+        try {
+            pagenumber = this.executeArgs.getJSONObject(0).getInt("pagenumber");
+            rowperpage = this.executeArgs.getJSONObject(0).getInt("rowperpage");
+        }
+        catch (Exception ee){
+            System.out.println(ee.getMessage());
+        }
 
         JSONArray contacts = new JSONArray();
 
