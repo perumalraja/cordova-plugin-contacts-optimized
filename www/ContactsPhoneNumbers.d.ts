@@ -11,7 +11,7 @@ interface ContactsPhoneNumbers {
      * @param onSuccess Success callback function invoked with the array of Contact objects returned from the database
      * @param onError Error callback function, invoked when an error occurs.
      */
-    list(pagenumber:any,rowperpage:any,onSuccess: (contacts: Contact[]) => void,
+    list(pagenumber:BigInteger,rowperpage:BigInteger,onSuccess: (contacts: Contact[]) => void,
         onError?: (error: string) => void): void;
 }
 
