@@ -180,6 +180,8 @@ public class ContactsManager extends CordovaPlugin {
                     // When the contact ID changes we need to push the Contact object to the array of contacts and create new objects.
                     try
                     {
+                    System.out.println("oldcontactId:" + oldContactId);
+                    System.out.println("contactId:" + contactId);
                     if (!oldContactId.equals(contactId)) {
                         // Populate the Contact object with it's arrays and push the contact into the contacts array
                         contact.put("phoneNumbers", phones);
