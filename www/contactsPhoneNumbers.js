@@ -33,9 +33,9 @@ var contactsList = {
      * @param errorCB error callback
      * @return array of Contacts 
      */
-    list:function(pagenumber,rowperpage,successCB, errorCB) {
+    list:function(successCB, errorCB) {
         argscheck.checkArgs('fF', 'contactsPhoneNumbers.list', arguments);
-        exec(pagenumber,rowperpage,successCB, errorCB, "ContactsPhoneNumbers", "list", []);
+        exec(successCB, errorCB, "ContactsPhoneNumbers", "list", []);
     }
 };
 

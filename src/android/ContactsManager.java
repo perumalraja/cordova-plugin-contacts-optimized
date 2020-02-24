@@ -32,6 +32,7 @@ public class ContactsManager extends CordovaPlugin {
 
     private static final String LOG_TAG = "Contact Phone Numbers";
 
+
     public ContactsManager() {}
 
     /**
@@ -78,7 +79,21 @@ public class ContactsManager extends CordovaPlugin {
         });
     }
 
-    private JSONArray list(int pagenumber,int rowperpage) {
+    private JSONArray list() {
+
+        int pagenumber=1;
+        int rowperpage=20;
+        
+        System.out.println(this.executeArgs.toString());
+
+        try {
+            pagenumber = this.executeArgs.getJSONObject(0).getInt("pagenumber");
+            rowperpage = this.executeArgs.getJSONObject(0).getInt("rowperpage");
+        }
+        catch (Exception ee){
+            System.out.println(ee.getMessage());
+        }
+
         JSONArray contacts = new JSONArray();
         ContentResolver cr = this.cordova.getActivity().getContentResolver();
         String[] projection = new String[] {
@@ -129,6 +144,7 @@ public class ContactsManager extends CordovaPlugin {
             if (c.getCount() > 0) {
 
                 int seeker = ((pagenumber*rowperpage)-pagenumber)+1;
+                int endseeker = (pagenumber*rowperpage);
                 Log.e(LOG_TAG, "seeker:" + String(seeker), null);
                 if(seeker>1)
                 {
