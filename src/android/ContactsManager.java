@@ -171,6 +171,8 @@ public class ContactsManager extends CordovaPlugin {
                         oldContactId = contactId;
 
                     // When the contact ID changes we need to push the Contact object to the array of contacts and create new objects.
+                    try
+                    {
                     if (!oldContactId.equals(contactId)) {
                         // Populate the Contact object with it's arrays and push the contact into the contacts array
                         contact.put("phoneNumbers", phones);
@@ -182,6 +184,7 @@ public class ContactsManager extends CordovaPlugin {
                         // Set newContact to true as we are starting to populate a new contact
                         newContact = true;
                     }
+                
 
                     // When we detect a new contact set the ID. These fields are available in every row in the result set returned.
                     if (newContact) {
@@ -201,6 +204,9 @@ public class ContactsManager extends CordovaPlugin {
                     else if (mimetype.equals(ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)) {
                         phones.put(getPhoneNumber(c));
                     }
+                }catch(Exception expp){
+                    Log.e(LOG_TAG, expp.getMessage(), expp);
+                }
 
                     // Set the old contact ID
                     oldContactId = contactId;
