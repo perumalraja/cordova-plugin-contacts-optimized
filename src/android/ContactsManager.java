@@ -146,9 +146,9 @@ public class ContactsManager extends CordovaPlugin {
                 int seeker = ((pagenumber*rowperpage)-pagenumber)+1;
                 int endseeker = (pagenumber*rowperpage);
                 Log.e(LOG_TAG, "seeker:" + String(seeker), null);
+                int cseek=0;
                 if(seeker>1)
                 {
-                    int cseek=0;
                     while (cseek<seeker) {    
                         try
                         {
