@@ -167,6 +167,10 @@ public class ContactsManager extends CordovaPlugin {
                     contactId = c.getString(c.getColumnIndex(ContactsContract.Data.CONTACT_ID));
 
                     Log.e(LOG_TAG, "current seeker:" + String.valueOf(cseek), null);
+
+                    if(c.getPosition()>endseeker)
+                    break;
+
                     if (c.getPosition() == 0) // If we are in the first row set the oldContactId
                         oldContactId = contactId;
 
