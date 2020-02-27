@@ -147,7 +147,7 @@ public class ContactsManager extends CordovaPlugin {
 
             if (c.getCount() > 0) {
 
-                int seeker = ((pagenumber*rowperpage)-pagenumber)+1;
+                int seeker = ((pagenumber-1)*rowperpage)+1;
                 int endseeker = (pagenumber*rowperpage);
                 Log.e(LOG_TAG, "seeker:" + String.valueOf(seeker), null);
                 int cseek=1;
@@ -183,6 +183,7 @@ public class ContactsManager extends CordovaPlugin {
                     System.out.println("oldcontactId:" + oldContactId);
                     System.out.println("contactId:" + contactId);
                     if (!oldContactId.equals(contactId)) {
+                        System.out.println("Contact Matched");
                         // Populate the Contact object with it's arrays and push the contact into the contacts array
                         contact.put("phoneNumbers", phones);
                         contacts.put(contact);
@@ -195,15 +196,18 @@ public class ContactsManager extends CordovaPlugin {
                     }
                 
 
+                    System.out.println("Reached Contact ID");
                     // When we detect a new contact set the ID. These fields are available in every row in the result set returned.
                     if (newContact) {
                         newContact = false;
                         contact.put("id", contactId);
+                        System.out.println("Contact ID Added");
                     }
 
                     mimetype = c.getString(c.getColumnIndex(ContactsContract.Data.MIMETYPE)); // Grab the mimetype of the current row as it will be used in a lot of comparisons
                     System.out.println("MIMEType:" + mimetype);
                     if (mimetype.equals(ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)) {
+                        System.out.println("putting non-contact into array");
                         contact.put("firstName", c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.GIVEN_NAME)));
                         contact.put("lastName", c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.FAMILY_NAME)));
                         contact.put("middleName", c.getString(c.getColumnIndex(ContactsContract.CommonDataKinds.StructuredName.MIDDLE_NAME)));
@@ -211,6 +215,7 @@ public class ContactsManager extends CordovaPlugin {
                         contact.put("thumbnail", c.getString(c.getColumnIndex(ContactsContract.Contacts.PHOTO_THUMBNAIL_URI)));
                     }
                     else if (mimetype.equals(ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)) {
+                        System.out.println("putting contact into array");
                         phones.put(getPhoneNumber(c));
                     }
                 }catch(Exception expp){
@@ -243,6 +248,7 @@ public class ContactsManager extends CordovaPlugin {
         phoneNumber.put("number", number);
         phoneNumber.put("normalizedNumber", (normalizedNumber == null) ? number : normalizedNumber);
         phoneNumber.put("type", getPhoneTypeLabel(cursor.getInt(cursor.getColumnIndex(Phone.TYPE))));
+        System.out.println(phoneNumber.toString());
         return phoneNumber;
     }
 
